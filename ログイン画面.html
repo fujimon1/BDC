@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="shift_jis">
+  <title>ログイン画面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>ログイン</h2>
+
+    <!-- ログインボタン -->
+    <form action="kanaisenntaku.html" method="get">
+      <label for="email">メールアドレス:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="username">ユーザー名:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">パスワード:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">ログイン</button>
+    </form>
+
+    <form>
+      <button type="button" onclick="openData()" style="background-color: #2196F3;">データ保存を見る</button>
+    </form>
+  </div>
+
+  <script>
+    function openData() {
+      try {
+        var shell = new ActiveXObject("WScript.Shell");
+        shell.Run("open_data.bat");
+      } catch (e) {
+        alert("この機能はInternet Explorerでのみ動作します。");
+      }
+    }
+  </script>
+</body>
+</html>
+
