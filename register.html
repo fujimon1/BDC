@@ -2,19 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ログイン画面</title>
+  <title>新規登録画面</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #74ebd5, #ACB6E5);
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
     }
-    .login-container {
+    .register-container {
       background: white;
       padding: 2rem;
       border-radius: 12px;
@@ -39,19 +39,19 @@
       margin-top: 1rem;
       border: none;
       border-radius: 8px;
-      background: #3498db;
+      background: #e67e22;
       color: white;
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s;
     }
     button:hover {
-      background: #2980b9;
+      background: #d35400;
     }
     .link {
       display: block;
       margin-top: 1rem;
-      color: #3498db;
+      color: #e67e22;
       text-decoration: none;
     }
     .link:hover {
@@ -60,31 +60,27 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h1>ログイン</h1>
-    <form onsubmit="return login(event)">
-      <input type="text" id="username" placeholder="ユーザー名" required>
-      <input type="password" id="password" placeholder="パスワード" required>
-      <button type="submit">ログイン</button>
+  <div class="register-container">
+    <h1>新規登録</h1>
+    <form onsubmit="return register(event)">
+      <input type="text" id="newUsername" placeholder="ユーザー名" required>
+      <input type="password" id="newPassword" placeholder="パスワード" required>
+      <button type="submit">登録</button>
     </form>
-    <a href="register.html" class="link">新規登録はこちら</a>
+    <a href="index.html" class="link">ログイン画面に戻る</a>
   </div>
 
   <script>
-    function login(event) {
+    function register(event) {
       event.preventDefault();
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
+      const newUser = document.getElementById('newUsername').value;
+      const newPass = document.getElementById('newPassword').value;
 
-      const savedUser = localStorage.getItem("user");
-      const savedPass = localStorage.getItem("pass");
+      localStorage.setItem("user", newUser);
+      localStorage.setItem("pass", newPass);
 
-      if (user === savedUser && pass === savedPass) {
-        alert("ログイン成功！");
-        location.href = "選択画面.html";
-      } else {
-        alert("ユーザー名またはパスワードが違います");
-      }
+      alert("登録完了！ログインしてください。");
+      location.href = "index.html";
     }
   </script>
 </body>
