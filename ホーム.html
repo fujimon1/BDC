@@ -2,70 +2,101 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ホーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
     body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
+
     header {
-      background-color: #4CAF50;
+      background: linear-gradient(to right, #34495e, #2c3e50);
       color: white;
-      padding: 15px;
+      padding: 2rem 1rem;
       text-align: center;
-      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    nav {
-      text-align: center;
-      margin: 15px 0;
-      flex-shrink: 0;
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
     }
-    nav a {
-      margin: 0 10px;
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .menu {
+      margin: 18rem auto 18rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      flex-grow: 1;
+    }
+
+    .menu a {
       text-decoration: none;
-      padding: 10px;
-      background-color: #2196F3;
+      background: white;
+      border: 2px solid #3498db;
+      color: #3498db;
+      font-size: 1.2rem;
+      width: 240px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+
+    .menu a:hover {
+      background: #3498db;
       color: white;
-      border-radius: 5px;
+      transform: translateY(-5px);
     }
-    nav a:hover {
-      background-color: #1976D2;
-    }
+
     footer {
-      margin-top: auto; /* ここがポイント */
+      background: #2c3e50;
+      color: white;
       text-align: center;
-      color: #666;
-      padding: 15px 0;
-      border-top: 1px solid #ccc;
-      font-size: 0.9em;
-      background-color: #f9f9f9;
-      flex-shrink: 0;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>新総アプリ - ホーム</h1>
+    <p>各種画面へ移動できます</p>
   </header>
 
-  <nav>
+  <div class="menu">
     <a href="file:///P:/【R07年度分】/2025年_3年_課題研究/グループスペース/９藤本/全体/ログイン画面.html">ログイン画面へ</a>
     <a href="file:///P:/【R07年度分】/2025年_3年_課題研究/グループスペース/９藤本/なかじま/部活選択画面.html">部活選択画面へ</a>
     <a href="file:///P:/【R07年度分】/2025年_3年_課題研究/グループスペース/９藤本/さわ/科内選択選択画面.html">科内選択選択画面へ</a>
-  </nav>
+  </div>
 
   <footer>
-    <p>© 2025 新総アプリ. All rights reserved.</p>
+    © 2025 新総アプリ. All rights reserved.
   </footer>
+
 </body>
 </html>
-
-
-
