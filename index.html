@@ -71,33 +71,37 @@
   </div>
 
   <script>
-    function login(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const pass = document.getElementById('password').value;
+    <script>
+  function login(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const pass = document.getElementById('password').value;
 
-      // stアカウントチェック
-      if (!email.startsWith("st")) {
-        alert("stアカウントのみログインできます。");
-        return;
-      }
-
-      const userData = localStorage.getItem("user_" + email);
-
-      if (!userData) {
-        alert("メールアドレスが登録されていません");
-        return;
-      }
-
-      const user = JSON.parse(userData);
-
-      if (user.password === pass) {
-        alert("ログイン成功！ようこそ " + user.username + " さん");
-        location.href = "ホーム.html";
-      } else {
-        alert("パスワードが違います");
-      }
+    // stアカウントチェック（ドメインで判定）
+    if (!email.endsWith("@st.spec.ed.jp")) {
+      alert("st.spec.ed.jp のメールアドレスのみログインできます。");
+      return;
     }
+
+    const userData = localStorage.getItem("user_" + email);
+
+    if (!userData) {
+      alert("メールアドレスが登録されていません");
+      return;
+    }
+
+    const user = JSON.parse(userData);
+
+    if (user.password === pass) {
+      alert("ログイン成功！ようこそ " + user.username + " さん");
+      location.href = "ホーム.html";
+    } else {
+      alert("パスワードが違います");
+    }
+  }
+</script>
+
   </script>
 </body>
 </html>
+
