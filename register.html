@@ -72,27 +72,32 @@
   </div>
 
   <script>
-    function register(event) {
-      event.preventDefault();
-      const email = document.getElementById('regEmail').value.trim();
-      const username = document.getElementById('regUsername').value.trim();
-      const password = document.getElementById('regPassword').value;
+   <script>
+  function register(event) {
+    event.preventDefault();
+    const email = document.getElementById('regEmail').value.trim();
+    const username = document.getElementById('regUsername').value.trim();
+    const password = document.getElementById('regPassword').value;
 
-      if (!email.startsWith("st")) {
-        alert("メールアドレスはstアカウントのみ使用できます。");
-        return;
-      }
-
-      if (!email || !username || !password) {
-        alert("すべての項目を入力してください");
-        return;
-      }
-
-      localStorage.setItem("user_" + email, JSON.stringify({ email, username, password }));
-
-      alert("登録完了！ログインしてください。");
-      location.href = "index.html";
+    // stアカウントチェック（ドメインで判定）
+    if (!email.endsWith("@st.spec.ed.jp")) {
+      alert("メールアドレスは @st.spec.ed.jp のみ使用できます。");
+      return;
     }
+
+    if (!email || !username || !password) {
+      alert("すべての項目を入力してください");
+      return;
+    }
+
+    localStorage.setItem("user_" + email, JSON.stringify({ email, username, password }));
+
+    alert("登録完了！ログインしてください。");
+    location.href = "index.html";
+  }
+</script>
+
   </script>
 </body>
 </html>
+
