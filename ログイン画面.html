@@ -1,83 +1,103 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="shift_jis">
+  <meta charset="UTF-8">
   <title>ログイン画面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #74ebd5, #ACB6E5);
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      margin: 0;
     }
     .login-container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       width: 300px;
-    }
-    h2 {
       text-align: center;
-      margin-bottom: 20px;
     }
-    input[type="text"],
-    input[type="password"],
-    input[type="email"] {
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+    input {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      box-sizing: border-box;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
     button {
       width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
+      padding: 0.8rem;
+      margin-top: 1rem;
       border: none;
-      margin-top: 10px;
+      border-radius: 8px;
+      background: #3498db;
+      color: white;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background 0.3s;
     }
     button:hover {
-      background-color: #45a049;
+      background: #2980b9;
+    }
+    .link {
+      display: block;
+      margin-top: 1rem;
+      color: #3498db;
+      text-decoration: none;
+    }
+    .link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
-    <h2>ログイン</h2>
-
-    <!-- ログインボタン -->
-    <form action="kanaisenntaku.html" method="get">
-      <label for="email">メールアドレス:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="username">ユーザー名:</label>
-      <input type="text" id="username" name="username" required>
-
-      <label for="password">パスワード:</label>
-      <input type="password" id="password" name="password" required>
-
+    <h1>ログイン</h1>
+    <form onsubmit="return login(event)">
+      <input type="email" id="email" placeholder="メールアドレス (stから始まる)" required>
+      <input type="password" id="password" placeholder="パスワード" required>
       <button type="submit">ログイン</button>
     </form>
-
-    <form>
-      <button type="button" onclick="openData()" style="background-color: #2196F3;"></button>
-    </form>
+    <a href="register.html" class="link">新規登録はこちら</a>
   </div>
 
   <script>
-    function openData() {
-      try {
-        var shell = new ActiveXObject("WScript.Shell");
-        shell.Run("open_data.bat");
-      } catch (e) {
-        alert("");
+    function login(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const pass = document.getElementById('password').value;
+
+      // stアカウントチェック
+      if (!email.startsWith("st")) {
+        alert("stアカウントのみログインできます。");
+        return;
+      }
+
+      const userData = localStorage.getItem("user_" + email);
+
+      if (!userData) {
+        alert("メールアドレスが登録されていません");
+        return;
+      }
+
+      const user = JSON.parse(userData);
+
+      if (user.password === pass) {
+        alert("ログイン成功！ようこそ " + user.username + " さん");
+        location.href = "ホーム.html";
+      } else {
+        alert("パスワードが違います");
       }
     }
   </script>
 </body>
 </html>
-
