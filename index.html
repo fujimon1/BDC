@@ -63,7 +63,7 @@
   <div class="login-container">
     <h1>ログイン</h1>
     <form onsubmit="return login(event)">
-      <input type="text" id="username" placeholder="ユーザー名" required>
+      <input type="email" id="email" placeholder="メールアドレス" required>
       <input type="password" id="password" placeholder="パスワード" required>
       <button type="submit">ログイン</button>
     </form>
@@ -73,20 +73,25 @@
   <script>
     function login(event) {
       event.preventDefault();
-      const user = document.getElementById('username').value;
+      const email = document.getElementById('email').value.trim();
       const pass = document.getElementById('password').value;
 
-      const savedUser = localStorage.getItem("user");
-      const savedPass = localStorage.getItem("pass");
+      const userData = localStorage.getItem("user_" + email);
 
-      if (user === savedUser && pass === savedPass) {
-        alert("ログイン成功！");
+      if (!userData) {
+        alert("メールアドレスが登録されていません");
+        return;
+      }
+
+      const user = JSON.parse(userData);
+
+      if (user.password === pass) {
+        alert("ログイン成功！ようこそ " + user.username + " さん");
         location.href = "ホーム.html";
       } else {
-        alert("ユーザー名またはパスワードが違います");
+        alert("パスワードが違います");
       }
     }
   </script>
 </body>
 </html>
-
