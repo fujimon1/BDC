@@ -63,7 +63,7 @@
   <div class="register-container">
     <h1>新規登録</h1>
     <form onsubmit="return register(event)">
-      <input type="email" id="regEmail" placeholder="メールアドレス" required>
+      <input type="email" id="regEmail" placeholder="メールアドレス (stから始まる)" required>
       <input type="text" id="regUsername" placeholder="ユーザー名" required>
       <input type="password" id="regPassword" placeholder="パスワード" required>
       <button type="submit">登録</button>
@@ -78,12 +78,16 @@
       const username = document.getElementById('regUsername').value.trim();
       const password = document.getElementById('regPassword').value;
 
+      if (!email.startsWith("st")) {
+        alert("メールアドレスはstアカウントのみ使用できます。");
+        return;
+      }
+
       if (!email || !username || !password) {
         alert("すべての項目を入力してください");
         return;
       }
 
-      // 保存 (メールアドレスをキーにする)
       localStorage.setItem("user_" + email, JSON.stringify({ email, username, password }));
 
       alert("登録完了！ログインしてください。");
