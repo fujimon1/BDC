@@ -78,7 +78,7 @@
 
     // stアカウントチェック（ドメインで判定）
     if (!email.endsWith("@st.spec.ed.jp")) {
-      alert("st.spec.ed.jp のメールアドレスのみログインできます。");
+      alert("登録済みのアカウントのみログインできます。");
       return;
     }
 
@@ -92,7 +92,7 @@
     const user = JSON.parse(userData);
 
     if (user.password === pass) {
-      alert("ログイン成功！ようこそ " + user.username + " さん");
+      alert("ようこそ " + user.username + " さん");
       location.href = "ホーム.html";
     } else {
       alert("パスワードが違います");
@@ -101,6 +101,7 @@
   </script>
 </body>
 </html>
+
 
 
 
