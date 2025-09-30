@@ -74,11 +74,11 @@
   <script>
   function register(event) {
     event.preventDefault();
-    const email = document.getElementById('regemail').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
     const username = document.getElementById('regUsername').value.trim();
     const password = document.getElementById('regPassword').value;
 
-    // stアカウントチェック（ドメインで判定）
+    // stアカウントチェック
     if (!email.endsWith("@st.spec.ed.jp")) {
       alert("メールアドレスは stアカウントのみ使用できます。");
       return;
@@ -91,12 +91,13 @@
 
     localStorage.setItem("user_" + email, JSON.stringify({ email, username, password }));
 
-    alert("登録完了！ログインしてください。");
+    alert("登録完了");
     location.href = "index.html";
   }
   </script>
 </body>
 </html>
+
 
 
 
