@@ -64,7 +64,7 @@
     <h1>新規登録</h1>
     <form onsubmit="return register(event)">
       <input type="email" id="regEmail" placeholder="メールアドレス" required>
-      <input type="text" id="regUsername" placeholder="ユーザー名" required>
+      <input type="text" id="regUsername" placeholder= "ユーザー名" required>
       <input type="password" id="regPassword" placeholder="パスワード" required>
       <button type="submit">登録</button>
     </form>
@@ -74,13 +74,13 @@
   <script>
   function register(event) {
     event.preventDefault();
-    const email = document.getElementById('regEmail').value.trim();
+    const email = document.getElementById('regemail').value.trim();
     const username = document.getElementById('regUsername').value.trim();
     const password = document.getElementById('regPassword').value;
 
     // stアカウントチェック（ドメインで判定）
     if (!email.endsWith("@st.spec.ed.jp")) {
-      alert("メールアドレスは @st.spec.ed.jp のみ使用できます。");
+      alert("メールアドレスは stアカウントのみ使用できます。");
       return;
     }
 
@@ -97,6 +97,7 @@
   </script>
 </body>
 </html>
+
 
 
 
