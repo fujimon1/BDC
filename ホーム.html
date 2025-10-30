@@ -15,27 +15,27 @@
       flex-direction: column;
     }
 
-    /* ▼ ヒーローヘッダー ▼ */
+    /* ▼ ヒーローヘッダー（背景画像ver） ▼ */
     header.hero {
       position: relative;
       height: 60vh;
-      overflow: hidden;
+      background: url('background.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       text-align: center;
+      color: white;
     }
 
-    header.hero video.background-video {
+    header.hero::before {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background: rgba(0, 0, 0, 0.45); /* 画像の上に暗いフィルター */
       z-index: 0;
-      filter: brightness(70%);
     }
 
     header.hero .overlay {
@@ -117,13 +117,8 @@
 </head>
 <body>
 
-  <!-- ▼ ヒーローヘッダー（背景動画） ▼ -->
+  <!-- ▼ ヒーローヘッダー（背景画像） ▼ -->
   <header class="hero">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="campus.mp4" type="video/mp4">
-      <!-- 動画が再生できない場合の代替テキスト -->
-      お使いのブラウザは動画をサポートしていません。
-    </video>
     <div class="overlay">
       <h1>新総アプリ - ホーム</h1>
       <p>各種画面へ移動できます</p>
@@ -144,6 +139,8 @@
 
 </body>
 </html>
+
+
 
 
 
