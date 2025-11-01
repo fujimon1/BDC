@@ -156,22 +156,7 @@
   const form = document.getElementById('commentForm');
   const reviewContainer = document.getElementById('review-container');
 
-  // サンプルコメント（削除不可なのでuserIdは特別に設定）
-  const sampleReviews = [
-    {
-      name: "2年生・ユウト",
-      rating: 5,
-      comment: "仲間との連携プレーが楽しい！もっと上手くなりたいです。",
-      userId: "sample-1"
-    },
-    {
-      name: "1年生・ミナト",
-      rating: 4,
-      comment: "先輩が優しく教えてくれるので安心して参加できました！",
-      userId: "sample-2"
-    },
-  ];
-
+ 
   // 星表示用関数
   function starsDisplay(num) {
     return '★'.repeat(num) + '☆'.repeat(5 - num);
@@ -274,3 +259,4 @@
 
 </body>
 </html>
+
