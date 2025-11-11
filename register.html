@@ -1,1 +1,116 @@
-<!DOCTYPE html> <html lang="ja"> <head> <meta charset="UTF-8"> <title>新規登録画面</title> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <style> body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(to bottom, #ffecd2, #fcb69f); display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; } .register-container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.2); width: 300px; text-align: center; } h1 { margin-bottom: 1.5rem; color: #2c3e50; } input { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid #ccc; border-radius: 8px; } button { width: 100%; padding: 0.8rem; margin-top: 1rem; border: none; border-radius: 8px; background: #e67e22; color: white; font-size: 1rem; cursor: pointer; transition: background 0.3s; } button:hover { background: #d35400; } .link { display: block; margin-top: 1rem; color: #e67e22; text-decoration: none; } .link:hover { text-decoration: underline; } </style> </head> <body> <div class="register-container"> <h1>新規登録</h1> <form onsubmit="return register(event)"> <input type="email" id="regEmail" placeholder="メールアドレス" required> <input type="text" id="regUsername" placeholder= "ユーザー名" required> <input type="password" id="regPassword" placeholder="パスワード" required> <button type="submit">登録</button> </form> <a href="index.html" class="link">ログイン画面に戻る</a> </div> <script> function register(event) { event.preventDefault(); const email = document.getElementById('regEmail').value.trim(); const username = document.getElementById('regUsername').value.trim(); const password = document.getElementById('regPassword').value; // stアカウントチェック if (!email.endsWith("@st.spec.ed.jp")) { alert("メールアドレスは stアカウントのみ使用できます"); return; } if (!email || !username || !password) { alert("すべての項目を入力してください"); return; } localStorage.setItem("user_" + email, JSON.stringify({ email, username, password })); alert("登録完了"); location.href = "index.html"; } </script> </body> </html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>新規登録画面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .register-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #e67e22;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #d35400;
+    }
+    .link {
+      display: block;
+      margin-top: 1rem;
+      color: #e67e22;
+      text-decoration: none;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h1>新規登録</h1>
+    <form onsubmit="return register(event)">
+      <input type="email" id="regEmail" placeholder="メールアドレス" required>
+      <input type="text" id="regUsername" placeholder="ユーザー名" required>
+      <input type="password" id="regPassword" placeholder="パスワード（6文字以上）" required minlength="6">
+      <button type="submit">登録</button>
+    </form>
+    <a href="index.html" class="link">ログイン画面に戻る</a>
+  </div>
+
+  <script>
+    function register(event) {
+      event.preventDefault();
+      const email = document.getElementById('regEmail').value.trim();
+      const username = document.getElementById('regUsername').value.trim();
+      const password = document.getElementById('regPassword').value;
+
+      // 🔒 stアカウントチェック
+      if (!email.endsWith("@st.spec.ed.jp")) {
+        alert("メールアドレスは stアカウントのみ使用できます");
+        return;
+      }
+
+      // 🔒 入力チェック
+      if (!email || !username || !password) {
+        alert("すべての項目を入力してください");
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("パスワードは6文字以上にしてください");
+        return;
+      }
+
+      // 🧩 すでに登録済みかチェック
+      if (localStorage.getItem("user_" + email)) {
+        alert("このメールアドレスはすでに登録されています");
+        return;
+      }
+
+      // 🗂️ 保存
+      const userData = { email, username, password };
+      localStorage.setItem("user_" + email, JSON.stringify(userData));
+
+      // 🔑 ログイン状態をリセット
+      localStorage.removeItem("currentUser");
+
+      alert("登録完了しました！");
+      location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
