@@ -78,13 +78,13 @@
       const username = document.getElementById('regUsername').value.trim();
       const password = document.getElementById('regPassword').value;
 
-      // 🔒 stアカウントチェック
+      // stアカウントチェック
       if (!email.endsWith("@st.spec.ed.jp")) {
         alert("メールアドレスは stアカウントのみ使用できます");
         return;
       }
 
-      // 🔒 入力チェック
+      // 入力チェック
       if (!email || !username || !password) {
         alert("すべての項目を入力してください");
         return;
@@ -95,17 +95,17 @@
         return;
       }
 
-      // 🧩 すでに登録済みかチェック
+      // すでに登録済みかチェック
       if (localStorage.getItem("user_" + email)) {
         alert("このメールアドレスはすでに登録されています");
         return;
       }
 
-      // 🗂️ 保存
+      // 保存
       const userData = { email, username, password };
       localStorage.setItem("user_" + email, JSON.stringify(userData));
 
-      // 🔑 ログイン状態をリセット
+      // ログイン状態をリセット
       localStorage.removeItem("currentUser");
 
       alert("登録完了しました！");
@@ -114,3 +114,4 @@
   </script>
 </body>
 </html>
+
