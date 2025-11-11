@@ -14,8 +14,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* ▼ ヒーローヘッダー（背景画像ver） ▼ */
     header.hero {
       position: relative;
       height: 60vh;
@@ -26,18 +24,14 @@
       text-align: center;
       color: white;
     }
-
     header.hero::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.45); /* 画像の上に暗いフィルター */
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.45);
       z-index: 0;
     }
-
     header.hero .overlay {
       position: relative;
       z-index: 1;
@@ -45,19 +39,8 @@
       padding: 2rem 3rem;
       border-radius: 12px;
     }
-
-    header.hero h1 {
-      margin: 0;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-    }
-
-    header.hero p {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    /* ▼ メニュー ▼ */
+    header.hero h1 { margin: 0; font-size: 2.8rem; letter-spacing: 2px; }
+    header.hero p { margin-top: 0.5rem; font-size: 1.1rem; }
     .menu {
       margin: 6rem auto;
       display: flex;
@@ -66,31 +49,23 @@
       gap: 2rem;
       flex-grow: 1;
     }
-
     .menu a {
       text-decoration: none;
       background: white;
       border: 2px solid #3498db;
       color: #3498db;
       font-size: 1.2rem;
-      width: 240px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 240px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: all 0.3s;
     }
-
     .menu a:hover {
-      background: #3498db;
-      color: white;
+      background: #3498db; color: white;
       transform: translateY(-5px) scale(1.03);
       box-shadow: 0 8px 18px rgba(52,152,219,0.3);
     }
-
-    /* ▼ フッター ▼ */
     footer {
       background: #2c3e50;
       color: white;
@@ -99,50 +74,60 @@
       font-size: 0.9rem;
       margin-top: auto;
     }
-
-    /* ▼ スマホ対応 ▼ */
-    @media (max-width: 600px) {
-      header.hero h1 {
-        font-size: 2rem;
-      }
-      header.hero .overlay {
-        padding: 1.5rem 2rem;
-      }
-      .menu {
-        flex-direction: column;
-        align-items: center;
-      }
+    .logout-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .logout-btn:hover {
+      background: #c0392b;
     }
   </style>
 </head>
 <body>
 
-  <!-- ▼ ヒーローヘッダー（背景画像） ▼ -->
   <header class="hero">
     <div class="overlay">
       <h1>新総アプリ - ホーム</h1>
-      <p>各種画面へ移動できます</p>
+      <p id="welcome">ようこそ！</p>
+      <button class="logout-btn" onclick="logout()">ログアウト</button>
     </div>
   </header>
 
-  <!-- ▼ メニュー ▼ -->
   <div class="menu">
-    <a href="index.html">ログイン画面へ</a>
     <a href="部活選択画面.html">部活選択画面へ</a>
     <a href="科内選択画面.html">科内選択画面へ</a>
   </div>
 
-  <!-- ▼ フッター ▼ -->
   <footer>
     © 2025 新総アプリ. All rights reserved.
   </footer>
 
+  <script>
+    // ✅ ログインチェック
+    const currentEmail = localStorage.getItem("currentUser");
+    if (!currentEmail) {
+      alert("ログインしてください");
+      location.href = "index.html";
+    } else {
+      const userData = localStorage.getItem("user_" + currentEmail);
+      if (userData) {
+        const user = JSON.parse(userData);
+        document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
+      }
+    }
+
+    // ✅ ログアウト処理
+    function logout() {
+      localStorage.removeItem("currentUser");
+      alert("ログアウトしました");
+      location.href = "index.html";
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
