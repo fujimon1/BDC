@@ -76,7 +76,6 @@
     const email = document.getElementById('email').value.trim();
     const pass = document.getElementById('password').value;
 
-    // stアカウントチェック（ドメインで判定）
     if (!email.endsWith("@st.spec.ed.jp")) {
       alert("登録済みのアカウントのみログインできます");
       return;
@@ -93,6 +92,10 @@
 
     if (user.password === pass) {
       alert("ようこそ " + user.username + " さん");
+
+      // ✅ ログイン状態を保存
+      localStorage.setItem("currentUser", email);
+
       location.href = "home.html";
     } else {
       alert("パスワードが違います");
@@ -101,9 +104,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
