@@ -95,7 +95,6 @@
     button:hover {
       background-color: #21618c;
     }
-    /* 削除ボタン */
     .delete-btn {
       position: absolute;
       top: 8px;
@@ -122,10 +121,7 @@
 </header>
 
 <div class="review-container" id="review-container">
-  <!-- ここにコメント一覧が動的に入る -->
-  <!-- フォームは後ろに置きます -->
-  
-  <!-- コメント投稿フォーム -->
+
   <form id="commentForm">
     <h2>感想を書き込む</h2>
     <input type="text" id="nameInput" placeholder="お名前" required />
@@ -155,8 +151,6 @@
 
   const form = document.getElementById('commentForm');
   const reviewContainer = document.getElementById('review-container');
-
-  // サンプルコメント（削除不可なのでuserIdは特別に設定）
   const sampleReviews = [
     {
       name: "2年生・ユウト",
@@ -174,7 +168,7 @@
 
   // 星表示用関数
   function starsDisplay(num) {
-    return '★'.repeat(num) + '☆'.repeat(5 - num);
+    return '◆'.repeat(num) + '☆'.repeat(5 - num);
   }
 
   // レビューを画面に追加する関数
@@ -274,4 +268,5 @@
 
 </body>
 </html>
+
     
