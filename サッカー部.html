@@ -95,7 +95,6 @@
     button:hover {
       background-color: #21618c;
     }
-    /* 削除ボタン */
     .delete-btn {
       position: absolute;
       top: 8px;
@@ -132,7 +131,7 @@
     <textarea id="commentInput" rows="4" placeholder="感想をどうぞ" required></textarea>
 
     <div>
-      <label>評価（星1?5）:</label>
+      <label>評価（星5）:</label>
       <div class="rating" id="rating">
         <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★</label>
         <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
@@ -155,22 +154,6 @@
 
   const form = document.getElementById('commentForm');
   const reviewContainer = document.getElementById('review-container');
-
-  // サンプルコメント（削除不可なのでuserIdは特別に設定）
-  const sampleReviews = [
-    {
-      name: "2年生・ユウト",
-      rating: 5,
-      comment: "仲間との連携プレーが楽しい！もっと上手くなりたいです。",
-      userId: "sample-1"
-    },
-    {
-      name: "1年生・ミナト",
-      rating: 4,
-      comment: "先輩が優しく教えてくれるので安心して参加できました！",
-      userId: "sample-2"
-    },
-  ];
 
   // 星表示用関数
   function starsDisplay(num) {
@@ -274,4 +257,5 @@
 
 </body>
 </html>
+
 
