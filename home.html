@@ -12,7 +12,7 @@
       background: #f5f7fa;
       color: #333;
 
-      /* ★ 追加：フッターを下に固定させるため */
+      /* Footerを一番下へ */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -41,9 +41,9 @@
       transform: translateY(-2px);
     }
 
-    /* --- ヒーロー部分 --- */
+    /* --- ヒーロー部分（画像大きめ） --- */
     header.hero {
-      height: 45vh;
+      height: 60vh; /* ★ 45vh → 60vh に拡大 */
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
       position: relative;
       display: flex;
@@ -76,9 +76,9 @@
       font-size: 1.1rem;
     }
 
-    /* --- メニューカード --- */
+    /* --- メニューカード（さらに下へ移動） --- */
     .menu-area {
-      margin: 120px auto 80px auto;
+      margin: 160px auto 80px auto;  /* ★ 120px → 160px に増量 */
       max-width: 900px;
       padding: 0 20px;
       display: flex;
@@ -109,7 +109,7 @@
       font-weight: 600;
     }
 
-    /* --- フッター（★下に固定される） --- */
+    /* --- フッター --- */
     footer {
       background: #2c3e50;
       color: white;
@@ -117,17 +117,16 @@
       padding: 1.2rem;
       font-size: 0.85rem;
 
-      /* ★ 超重要：ページ最下部に固定 */
-      margin-top: auto;
+      margin-top: auto; /* ★ 一番下に張り付く */
     }
 
-    /* --- スマホ対応 --- */
+    /* --- スマホ対応（画像大きめ対応） --- */
     @media (max-width: 600px) {
       header.hero {
-        height: 38vh;
+        height: 50vh;
       }
       .menu-area {
-        margin: 90px auto 80px auto;
+        margin: 120px auto 70px auto;
       }
     }
   </style>
@@ -173,7 +172,8 @@
       const userData = localStorage.getItem("user_" + currentEmail);
       if (userData) {
         const user = JSON.parse(userData);
-        document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
+        document.getElementById("welcome").textContent =
+          `ようこそ ${user.username} さん`;
       }
     }
     
