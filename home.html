@@ -73,13 +73,13 @@
 
     /* --- メニューカード --- */
     .menu-area {
-      margin: -40px auto 50px auto;
+      margin: 120px auto 100px auto;  /* ★ 画像と重ならないよう大きめの余白を確保 */
       max-width: 900px;
       padding: 0 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
     }
 
     .card {
@@ -104,13 +104,24 @@
       font-weight: 600;
     }
 
+    /* --- フッター --- */
     footer {
       background: #2c3e50;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.2rem;
       font-size: 0.85rem;
-      margin-top: 30px;
+      margin-top: 60px; /* ★ ボタンとフッターの間に余白 */
+    }
+
+    /* --- スマホ対応 --- */
+    @media (max-width: 600px) {
+      header.hero {
+        height: 38vh;
+      }
+      .menu-area {
+        margin: 90px auto 80px auto;
+      }
     }
   </style>
 </head>
