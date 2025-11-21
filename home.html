@@ -4,103 +4,142 @@
   <meta charset="UTF-8" />
   <title>コブコミ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #ffffff;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: #f5f7fa;
       color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
+
+    /* --- 右上ログアウトボタン --- */
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .logout-btn {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.25s ease;
+    }
+    .logout-btn:hover {
+      background: #d93636;
+      transform: translateY(-2px);
+    }
+
+    /* --- ヒーロー部分 --- */
     header.hero {
+      height: 45vh;
+      background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
       position: relative;
-      height: 60vh;
-      background: url('新座総合技術高等学校校舎.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: white;
     }
     header.hero::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 0;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
     }
-    header.hero .overlay {
+    header.hero .text-box {
       position: relative;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2rem 3rem;
-      border-radius: 12px;
+      color: white;
+      padding: 1.4rem 2rem;
+      backdrop-filter: blur(7px);
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
     }
-    header.hero h1 { margin: 0; font-size: 2.8rem; letter-spacing: 2px; }
-    header.hero p { margin-top: 0.5rem; font-size: 1.1rem; }
-    .menu {
-      margin: 6rem auto;
+    header.hero h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    #welcome {
+      margin-top: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    /* --- メニューカード --- */
+    .menu-area {
+      margin: -40px auto 50px auto;
+      max-width: 900px;
+      padding: 0 20px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 2rem;
-      flex-grow: 1;
+      justify-content: center;
+      gap: 20px;
     }
-    .menu a {
+
+    .card {
+      width: 260px;
+      background: #fff;
+      padding: 1.6rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
       text-decoration: none;
-      background: white;
-      border: 2px solid #3498db;
-      color: #3498db;
-      font-size: 1.2rem;
-      width: 240px; height: 60px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s;
+      color: #333;
+      transition: .25s ease;
     }
-    .menu a:hover {
-      background: #3498db; color: white;
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 8px 18px rgba(52,152,219,0.3);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3rem;
+      color: #2c7be5;
+      font-weight: 600;
+    }
+
     footer {
       background: #2c3e50;
       color: white;
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-    .logout-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .logout-btn:hover {
-      background: #c0392b;
+      font-size: 0.85rem;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
+  <!-- 右上ログアウト -->
+  <div class="top-right">
+    <button class="logout-btn" onclick="logout()">ログアウト</button>
+  </div>
+
+  <!-- ヒーロー -->
   <header class="hero">
-    <div class="overlay">
-      <h1>HOME</h1>
+    <div class="text-box">
+      <h1>コブコミ</h1>
       <p id="welcome">ようこそ！</p>
-      <button class="logout-btn" onclick="logout()">ログアウト</button>
     </div>
   </header>
 
-  <div class="menu">
-    <a href="部活選択画面.html">部活選択画面へ</a>
-    <a href="科内選択画面.html">科内選択画面へ</a>
+  <!-- メニューカード -->
+  <div class="menu-area">
+    <a class="card" href="部活選択画面.html">
+      <h3>部活選択</h3>
+      <p>あなたの所属する部活動を選択できます。</p>
+    </a>
+    
+    <a class="card" href="科内選択画面.html">
+      <h3>科内選択</h3>
+      <p>科ごとのコミュニティへ移動します。</p>
+    </a>
   </div>
 
   <footer>
@@ -129,7 +168,3 @@
 
 </body>
 </html>
-
-
-
-
