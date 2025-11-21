@@ -21,13 +21,14 @@
       flex-direction: column;
     }
 
+    /* --- アカウント丸アイコン（薄い黒） --- */
     .account-btn {
       position: fixed;
       top: 20px;
       right: 20px;
       width: 42px;
       height: 42px;
-      background: #444; 
+      background: #444; /* 薄い黒 */
       color: white;
       border-radius: 50%;
       display: flex;
@@ -40,7 +41,7 @@
     }
     .account-btn:hover {
       transform: translateY(-2px);
-      background: #555; 
+      background: #555;
     }
     .account-btn svg {
       width: 22px;
@@ -110,10 +111,6 @@
       font-size: 2.5rem;
       font-weight: 600;
     }
-    #welcome {
-      margin-top: 0.4rem;
-      font-size: 1.1rem;
-    }
 
     .menu-area {
       flex-grow: 1;
@@ -156,6 +153,7 @@
 </head>
 <body>
 
+  <!-- 右上アカウントボタン（薄い黒） -->
   <div class="account-btn" id="accountBtn">
     <svg viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
@@ -169,8 +167,8 @@
 
   <header class="hero">
     <div class="text-box">
-      <h1>HOME</h1>
-      <p id="welcome">ようこそ！</p>
+      <h1>コブコミ</h1>
+      <!-- ようこそ〇〇は削除 -->
     </div>
   </header>
 
@@ -227,5 +225,3 @@
 
 </body>
 </html>
-
-
