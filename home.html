@@ -11,6 +11,11 @@
       font-family: "Inter", "Segoe UI", sans-serif;
       background: #f5f7fa;
       color: #333;
+
+      /* ★ 追加：フッターを下に固定させるため */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* --- 右上ログアウトボタン --- */
@@ -73,7 +78,7 @@
 
     /* --- メニューカード --- */
     .menu-area {
-      margin: 120px auto 100px auto; 
+      margin: 120px auto 80px auto;
       max-width: 900px;
       padding: 0 20px;
       display: flex;
@@ -104,14 +109,16 @@
       font-weight: 600;
     }
 
-    /* --- フッター --- */
+    /* --- フッター（★下に固定される） --- */
     footer {
       background: #2c3e50;
       color: white;
       text-align: center;
       padding: 1.2rem;
       font-size: 0.85rem;
-      margin-top: 60px; /* ★ ボタンとフッターの間に余白 */
+
+      /* ★ 超重要：ページ最下部に固定 */
+      margin-top: auto;
     }
 
     /* --- スマホ対応 --- */
@@ -144,12 +151,12 @@
   <div class="menu-area">
     <a class="card" href="部活選択画面.html">
       <h3>部活選択</h3>
-      <p>部活選択画面へ移動します。</p>
+      <p>あなたの所属する部活動を選択できます。</p>
     </a>
     
     <a class="card" href="科内選択画面.html">
       <h3>科内選択</h3>
-      <p>科内選択画面へ移動します。</p>
+      <p>科ごとのコミュニティへ移動します。</p>
     </a>
   </div>
 
@@ -179,4 +186,3 @@
 
 </body>
 </html>
-
