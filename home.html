@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* ★ スクロール禁止 & 高さ固定 */
+    /* --- スクロール禁止 & 高さ固定 --- */
     html, body {
       height: 100%;
       overflow: hidden;
@@ -22,32 +22,72 @@
       flex-direction: column;
     }
 
-    /* --- 右上ログアウトボタン --- */
-    .top-right {
+    /* --- アカウント丸アイコン --- */
+    .account-btn {
       position: fixed;
       top: 20px;
       right: 20px;
+      width: 42px;
+      height: 42px;
+      background: #3498db;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: 0.25s ease;
       z-index: 1000;
     }
-    .logout-btn {
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: 0.25s ease;
-    }
-    .logout-btn:hover {
-      background: #d93636;
+    .account-btn:hover {
       transform: translateY(-2px);
+      background: #2b82c7;
     }
 
-    /* --- ヒーロー部分（高さを画面に収まるように調整） --- */
+    /* --- アカウントメニュー --- */
+    .account-menu {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      width: 180px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 15px;
+      display: none; /* 非表示スタート */
+      z-index: 1001;
+    }
+
+    .account-menu p {
+      margin: 0 0 10px 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+    }
+
+    .menu-logout-btn {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d4d;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.25s;
+    }
+
+    .menu-logout-btn:hover {
+      background: #d93636;
+    }
+
+    /* --- ヒーロー部分 --- */
     header.hero {
-      height: 45vh; /* ★ 画面に収まる最適値 */
+      height: 45vh; /* 固定画面に収まる高さ */
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
       position: relative;
       display: flex;
@@ -55,14 +95,12 @@
       justify-content: center;
       text-align: center;
     }
-
     header.hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.5);
     }
-
     header.hero .text-box {
       position: relative;
       color: white;
@@ -71,17 +109,24 @@
       background: rgba(255,255,255,0.2);
       border-radius: 16px;
     }
+    header.hero h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+    #welcome {
+      margin-top: 0.4rem;
+      font-size: 1.1rem;
+    }
 
-    /* --- ボタンエリア（配置を画面に収めて固定） --- */
+    /* --- メニューカード --- */
     .menu-area {
       flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 30px;
-
-      /* ★ 画像と重ならず、スクロールなしで収める */
-      padding-top: 20px;
+      padding-top: 10px;
     }
 
     .card {
@@ -95,12 +140,10 @@
       color: #333;
       transition: .25s ease;
     }
-
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
-
     .card h3 {
       margin: 0 0 10px 0;
       font-size: 1.3rem;
@@ -108,7 +151,7 @@
       font-weight: 600;
     }
 
-    /* --- フッター（画面下に固定） --- */
+    /* --- フッター --- */
     footer {
       background: #2c3e50;
       color: white;
@@ -121,9 +164,13 @@
 </head>
 <body>
 
-  <!-- 右上ログアウト -->
-  <div class="top-right">
-    <button class="logout-btn" onclick="logout()">ログアウト</button>
+  <!-- 右上アカウントアイコン -->
+  <div class="account-btn" id="accountBtn">A</div>
+
+  <!-- アカウントメニュー -->
+  <div class="account-menu" id="accountMenu">
+    <p id="accountName"></p>
+    <button class="menu-logout-btn" onclick="logout()">ログアウト</button>
   </div>
 
   <!-- ヒーロー -->
@@ -147,12 +194,14 @@
     </a>
   </div>
 
+  <!-- フッター -->
   <footer>
     © 2025 新総アプリ. All rights reserved.
   </footer>
 
   <script>
     const currentEmail = localStorage.getItem("currentUser");
+
     if (!currentEmail) {
       alert("ログインしてください");
       location.href = "index.html";
@@ -160,10 +209,35 @@
       const userData = localStorage.getItem("user_" + currentEmail);
       if (userData) {
         const user = JSON.parse(userData);
+
+        // Welcome表示
         document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
+
+        // アカウントメニューにユーザー名を表示
+        document.getElementById("accountName").textContent = user.username;
+
+        // アカウントボタンに頭文字を表示
+        document.getElementById("accountBtn").textContent = user.username[0];
       }
     }
-    
+
+    // --- アカウントメニューの開閉 ---
+    const accountBtn = document.getElementById("accountBtn");
+    const accountMenu = document.getElementById("accountMenu");
+
+    accountBtn.addEventListener("click", () => {
+      accountMenu.style.display =
+        accountMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // 画面外クリックで閉じる
+    document.addEventListener("click", (e) => {
+      if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+        accountMenu.style.display = "none";
+      }
+    });
+
+    // --- ログアウト ---
     function logout() {
       localStorage.removeItem("currentUser");
       alert("ログアウトしました");
