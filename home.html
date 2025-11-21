@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* --- スクロール禁止 & 高さ固定 --- */
     html, body {
       height: 100%;
       overflow: hidden;
@@ -22,14 +21,14 @@
       flex-direction: column;
     }
 
-    /* --- アカウント丸アイコン（人型） --- */
+    /* --- アカウント丸アイコン（黒背景） --- */
     .account-btn {
       position: fixed;
       top: 20px;
       right: 20px;
       width: 42px;
       height: 42px;
-      background: #3498db;
+      background: #000; /* ←黒に変更 */
       color: white;
       border-radius: 50%;
       display: flex;
@@ -42,17 +41,14 @@
     }
     .account-btn:hover {
       transform: translateY(-2px);
-      background: #2b82c7;
+      background: #222; /* ホバー時少し明るめの黒 */
     }
-
-    /* SVGアイコンサイズ調整 */
     .account-btn svg {
       width: 22px;
       height: 22px;
       fill: white;
     }
 
-    /* --- アカウントメニュー --- */
     .account-menu {
       position: fixed;
       top: 70px;
@@ -65,7 +61,6 @@
       display: none;
       z-index: 1001;
     }
-
     .account-menu p {
       margin: 0 0 10px 0;
       font-size: 0.9rem;
@@ -73,7 +68,6 @@
       color: #333;
       text-align: center;
     }
-
     .menu-logout-btn {
       width: 100%;
       padding: 8px;
@@ -85,12 +79,10 @@
       font-size: 0.9rem;
       transition: 0.25s;
     }
-
     .menu-logout-btn:hover {
       background: #d93636;
     }
 
-    /* --- ヒーロー部分 --- */
     header.hero {
       height: 45vh;
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
@@ -124,7 +116,6 @@
       font-size: 1.1rem;
     }
 
-    /* --- メニューカード --- */
     .menu-area {
       flex-grow: 1;
       display: flex;
@@ -155,7 +146,6 @@
       font-weight: 600;
     }
 
-    /* --- フッター --- */
     footer {
       background: #2c3e50;
       color: white;
@@ -167,9 +157,8 @@
 </head>
 <body>
 
-  <!-- 右上アカウントボタン（人型アイコン） -->
+  <!-- 右上アカウントボタン（黒） -->
   <div class="account-btn" id="accountBtn">
-    <!-- 人の形のアイコン（SVG） -->
     <svg viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
     </svg>
@@ -181,7 +170,6 @@
     <button class="menu-logout-btn" onclick="logout()">ログアウト</button>
   </div>
 
-  <!-- ヒーロー -->
   <header class="hero">
     <div class="text-box">
       <h1>コブコミ</h1>
@@ -189,7 +177,6 @@
     </div>
   </header>
 
-  <!-- メニューカード -->
   <div class="menu-area">
     <a class="card" href="部活選択画面.html">
       <h3>部活選択</h3>
@@ -202,7 +189,6 @@
     </a>
   </div>
 
-  <!-- フッター -->
   <footer>
     © 2025 新総アプリ. All rights reserved.
   </footer>
@@ -217,13 +203,11 @@
       const userData = localStorage.getItem("user_" + currentEmail);
       if (userData) {
         const user = JSON.parse(userData);
-
         document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
         document.getElementById("accountName").textContent = user.username;
       }
     }
 
-    // --- アカウントメニュー開閉 ---
     const accountBtn = document.getElementById("accountBtn");
     const accountMenu = document.getElementById("accountMenu");
 
@@ -232,14 +216,12 @@
         accountMenu.style.display === "block" ? "none" : "block";
     });
 
-    // 外側クリックでメニューを閉じる
     document.addEventListener("click", (e) => {
       if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
         accountMenu.style.display = "none";
       }
     });
 
-    // --- ログアウト ---
     function logout() {
       localStorage.removeItem("currentUser");
       alert("ログアウトしました");
