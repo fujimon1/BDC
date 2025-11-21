@@ -21,14 +21,14 @@
       flex-direction: column;
     }
 
-    /* --- アカウント丸アイコン（黒背景） --- */
+    /* --- アカウント丸アイコン（薄い黒） --- */
     .account-btn {
       position: fixed;
       top: 20px;
       right: 20px;
       width: 42px;
       height: 42px;
-      background: #000; /* ←黒に変更 */
+      background: #444; /* ←薄めの黒 */
       color: white;
       border-radius: 50%;
       display: flex;
@@ -41,7 +41,7 @@
     }
     .account-btn:hover {
       transform: translateY(-2px);
-      background: #222; /* ホバー時少し明るめの黒 */
+      background: #555; /* ホバー時少し明るめ */
     }
     .account-btn svg {
       width: 22px;
@@ -49,6 +49,7 @@
       fill: white;
     }
 
+    /* --- アカウントメニュー --- */
     .account-menu {
       position: fixed;
       top: 70px;
@@ -157,14 +158,13 @@
 </head>
 <body>
 
-  <!-- 右上アカウントボタン（黒） -->
+  <!-- 右上アカウントボタン（薄い黒） -->
   <div class="account-btn" id="accountBtn">
     <svg viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
     </svg>
   </div>
 
-  <!-- アカウントメニュー -->
   <div class="account-menu" id="accountMenu">
     <p id="accountName"></p>
     <button class="menu-logout-btn" onclick="logout()">ログアウト</button>
