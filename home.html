@@ -169,7 +169,7 @@
 
   <header class="hero">
     <div class="text-box">
-      <h1>コブコミ</h1>
+      <h1>HOME</h1>
       <p id="welcome">ようこそ！</p>
     </div>
   </header>
@@ -200,7 +200,6 @@
       const userData = localStorage.getItem("user_" + currentEmail);
       if (userData) {
         const user = JSON.parse(userData);
-        document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
         document.getElementById("accountName").textContent = user.username;
       }
     }
@@ -228,4 +227,5 @@
 
 </body>
 </html>
+
 
