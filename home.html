@@ -22,7 +22,7 @@
       flex-direction: column;
     }
 
-    /* --- アカウント丸アイコン --- */
+    /* --- アカウント丸アイコン（人型） --- */
     .account-btn {
       position: fixed;
       top: 20px;
@@ -36,8 +36,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.25);
       transition: 0.25s ease;
       z-index: 1000;
@@ -45,6 +43,13 @@
     .account-btn:hover {
       transform: translateY(-2px);
       background: #2b82c7;
+    }
+
+    /* SVGアイコンサイズ調整 */
+    .account-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
     }
 
     /* --- アカウントメニュー --- */
@@ -57,7 +62,7 @@
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       padding: 15px;
-      display: none; /* 非表示スタート */
+      display: none;
       z-index: 1001;
     }
 
@@ -87,7 +92,7 @@
 
     /* --- ヒーロー部分 --- */
     header.hero {
-      height: 45vh; /* 固定画面に収まる高さ */
+      height: 45vh;
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
       position: relative;
       display: flex;
@@ -126,7 +131,6 @@
       justify-content: center;
       align-items: center;
       gap: 30px;
-      padding-top: 10px;
     }
 
     .card {
@@ -159,13 +163,17 @@
       padding: 0.8rem;
       font-size: 0.8rem;
     }
-
   </style>
 </head>
 <body>
 
-  <!-- 右上アカウントアイコン -->
-  <div class="account-btn" id="accountBtn">A</div>
+  <!-- 右上アカウントボタン（人型アイコン） -->
+  <div class="account-btn" id="accountBtn">
+    <!-- 人の形のアイコン（SVG） -->
+    <svg viewBox="0 0 24 24">
+      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
+    </svg>
+  </div>
 
   <!-- アカウントメニュー -->
   <div class="account-menu" id="accountMenu">
@@ -210,18 +218,12 @@
       if (userData) {
         const user = JSON.parse(userData);
 
-        // Welcome表示
         document.getElementById("welcome").textContent = `ようこそ ${user.username} さん`;
-
-        // アカウントメニューにユーザー名を表示
         document.getElementById("accountName").textContent = user.username;
-
-        // アカウントボタンに頭文字を表示
-        document.getElementById("accountBtn").textContent = user.username[0];
       }
     }
 
-    // --- アカウントメニューの開閉 ---
+    // --- アカウントメニュー開閉 ---
     const accountBtn = document.getElementById("accountBtn");
     const accountMenu = document.getElementById("accountMenu");
 
@@ -230,7 +232,7 @@
         accountMenu.style.display === "block" ? "none" : "block";
     });
 
-    // 画面外クリックで閉じる
+    // 外側クリックでメニューを閉じる
     document.addEventListener("click", (e) => {
       if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
         accountMenu.style.display = "none";
