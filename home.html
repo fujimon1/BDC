@@ -54,6 +54,12 @@
       display: none;
       z-index: 1001;
     }
+    .account-menu .username-display {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
     .account-menu button {
       width: 100%;
       padding: 8px;
@@ -176,6 +182,7 @@
 
   <!-- アカウントメニュー -->
   <div class="account-menu" id="accountMenu">
+    <div class="username-display" id="menuUsername"></div>
     <button id="accountDetailBtn">アカウント詳細</button>
     <button onclick="logout()">ログアウト</button>
   </div>
@@ -226,8 +233,10 @@
     const accountDetailBtn = document.getElementById("accountDetailBtn");
     const accountEdit = document.getElementById("accountEdit");
     const saveAccountBtn = document.getElementById("saveAccountBtn");
+    const menuUsername = document.getElementById("menuUsername");
 
     let user = JSON.parse(localStorage.getItem("user_" + currentEmail));
+    menuUsername.textContent = user.username; // メニュー上部に表示
 
     // アカウントボタンクリックでメニュー表示
     accountBtn.addEventListener("click", () => {
@@ -258,6 +267,7 @@
       user.password = document.getElementById("editPassword").value;
       localStorage.setItem("user_" + user.email, JSON.stringify(user));
       localStorage.setItem("currentUser", user.email);
+      menuUsername.textContent = user.username; // メニューに反映
       alert("アカウント情報を更新しました");
       accountEdit.style.display = "none";
     });
@@ -268,6 +278,5 @@
       location.href = "index.html";
     }
   </script>
-
 </body>
 </html>
