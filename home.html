@@ -12,7 +12,7 @@
       background: #f5f7fa;
       color: #333;
 
-      /* ★ 追加：フッターを下に固定させるため */
+      /* Footerを下へ固定する */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -41,9 +41,9 @@
       transform: translateY(-2px);
     }
 
-    /* --- ヒーロー部分 --- */
+    /* --- ヒーロー部分（画像を大きく） --- */
     header.hero {
-      height: 45vh;
+      height: 60vh; /* ← ★ 画像を大きくした */
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
       position: relative;
       display: flex;
@@ -76,9 +76,9 @@
       font-size: 1.1rem;
     }
 
-    /* --- メニューカード --- */
+    /* --- メニューカード（もっと下へ） --- */
     .menu-area {
-      margin: 120px auto 80px auto;
+      margin: 180px auto 80px auto; /* ← ★ 120px → 180px に変更して下へ */
       max-width: 900px;
       padding: 0 20px;
       display: flex;
@@ -109,25 +109,23 @@
       font-weight: 600;
     }
 
-    /* --- フッター（★下に固定される） --- */
+    /* --- フッター --- */
     footer {
       background: #2c3e50;
       color: white;
       text-align: center;
       padding: 1.2rem;
       font-size: 0.85rem;
-
-      /* ★ 超重要：ページ最下部に固定 */
-      margin-top: auto;
+      margin-top: auto; /* ← 下に固定 */
     }
 
     /* --- スマホ対応 --- */
     @media (max-width: 600px) {
       header.hero {
-        height: 38vh;
+        height: 50vh; /* スマホでも大きめ */
       }
       .menu-area {
-        margin: 90px auto 80px auto;
+        margin: 140px auto 70px auto; /* スマホでも余裕を持たせる */
       }
     }
   </style>
