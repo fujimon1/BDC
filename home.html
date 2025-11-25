@@ -174,7 +174,7 @@
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
     </svg>
   </div>
-
+  
   <div class="account-menu" id="accountMenu">
     <div class="username-display" id="menuUsername"></div>
     <button id="accountDetailBtn">アカウント詳細</button>
@@ -229,7 +229,7 @@
     const menuUsername = document.getElementById("menuUsername");
 
     let user = JSON.parse(localStorage.getItem("user_" + currentEmail));
-    menuUsername.textContent = user.username; // メニュー上部に表示
+    menuUsername.textContent = user.username;
 
     accountBtn.addEventListener("click", () => {
       accountMenu.style.display = accountMenu.style.display === "block" ? "none" : "block";
@@ -251,12 +251,30 @@
     });
 
     saveAccountBtn.addEventListener("click", () => {
-      user.username = document.getElementById("editUsername").value;
-      user.email = document.getElementById("editEmail").value;
-      user.password = document.getElementById("editPassword").value;
-      localStorage.setItem("user_" + user.email, JSON.stringify(user));
-      localStorage.setItem("currentUser", user.email);
-      menuUsername.textContent = user.username; // メニューに反映
+      const newUsername = document.getElementById("editUsername").value;
+      const newEmail = document.getElementById("editEmail").value;
+      const newPassword = document.getElementById("editPassword").value;
+
+      // ★ パスワード6文字以上チェック
+      if (newPassword.length < 6) {
+        alert("パスワードは6文字以上にしてください");
+        return;
+      }
+
+      // メールアドレス変更対応
+      if (newEmail !== user.email) {
+        localStorage.removeItem("user_" + user.email);
+      }
+
+      user.username = newUsername;
+      user.email = newEmail;
+      user.password = newPassword;
+
+      localStorage.setItem("user_" + newEmail, JSON.stringify(user));
+      localStorage.setItem("currentUser", newEmail);
+
+      menuUsername.textContent = newUsername;
+
       alert("アカウント情報を更新しました");
       accountEdit.style.display = "none";
     });
@@ -269,5 +287,3 @@
   </script>
 </body>
 </html>
-
-
