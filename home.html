@@ -255,6 +255,11 @@
       const newEmail = document.getElementById("editEmail").value;
       const newPassword = document.getElementById("editPassword").value;
 
+      if (!newEmail.endsWith("@st.spec.ed.jp")) {
+        alert("メールアドレスは @st.spec.ed.jp のみ利用できます");
+        return;
+      }
+
       if (newPassword.length < 6) {
         alert("パスワードは6文字以上にしてください");
         return;
@@ -285,4 +290,3 @@
   </script>
 </body>
 </html>
-
