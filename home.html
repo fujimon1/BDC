@@ -183,12 +183,19 @@
 
   <div class="account-edit" id="accountEdit">
     <h3>アカウント詳細</h3>
+
     <label>ユーザー名</label>
     <input type="text" id="editUsername" />
+
     <label>メールアドレス</label>
     <input type="email" id="editEmail" />
-    <label>パスワード</label>
+
+    <label>現在のパスワード</label>
+    <input type="password" id="oldPassword" />
+
+    <label>新しいパスワード</label>
     <input type="password" id="editPassword" />
+
     <button id="saveAccountBtn">保存</button>
   </div>
 
@@ -245,7 +252,8 @@
     accountDetailBtn.addEventListener("click", () => {
       document.getElementById("editUsername").value = user.username;
       document.getElementById("editEmail").value = user.email;
-      document.getElementById("editPassword").value = user.password;
+      document.getElementById("oldPassword").value = "";
+      document.getElementById("editPassword").value = "";
       accountEdit.style.display = "block";
       accountMenu.style.display = "none";
     });
@@ -254,6 +262,12 @@
       const newUsername = document.getElementById("editUsername").value;
       const newEmail = document.getElementById("editEmail").value;
       const newPassword = document.getElementById("editPassword").value;
+      const oldPassword = document.getElementById("oldPassword").value;
+
+      if (oldPassword !== user.password) {
+        alert("現在のパスワードが正しくありません");
+        return;
+      }
 
       if (!newEmail.endsWith("@st.spec.ed.jp")) {
         alert("メールアドレスは @st.spec.ed.jp のみ利用できます");
