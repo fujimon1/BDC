@@ -255,16 +255,25 @@
       const newEmail = document.getElementById("editEmail").value;
       const newPassword = document.getElementById("editPassword").value;
 
+      // ★ st.spec.ed.jp だけ許可
       if (!newEmail.endsWith("@st.spec.ed.jp")) {
-        alert("メールアドレスはstアカウントのみ利用できます");
+        alert("メールアドレスは @st.spec.ed.jp のみ利用できます");
         return;
       }
 
-      if (!/^[0-9]{6,}$/.test(newPassword)) {
-        alert("パスワードは数字のみ、かつ6文字以上にしてください");
+      // ★ 数字のみチェック
+      if (!/^[0-9]*$/.test(newPassword)) {
+        alert("数字のみを使用してください");
         return;
       }
 
+      // ★ 6文字以上チェック
+      if (newPassword.length < 6) {
+        alert("6文字以上にしてください");
+        return;
+      }
+
+      // メール変更時
       if (newEmail !== user.email) {
         localStorage.removeItem("user_" + user.email);
       }
