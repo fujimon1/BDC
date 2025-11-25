@@ -260,8 +260,8 @@
         return;
       }
 
-      if (newPassword.length < 6) {
-        alert("パスワードは6文字以上にしてください");
+      if (!/^[0-9]{6,}$/.test(newPassword)) {
+        alert("パスワードは数字のみ、かつ6文字以上にしてください");
         return;
       }
 
@@ -290,4 +290,3 @@
   </script>
 </body>
 </html>
-
