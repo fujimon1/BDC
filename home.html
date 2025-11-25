@@ -255,13 +255,11 @@
       const newEmail = document.getElementById("editEmail").value;
       const newPassword = document.getElementById("editPassword").value;
 
-      // ★ パスワード6文字以上チェック
       if (newPassword.length < 6) {
         alert("パスワードは6文字以上にしてください");
         return;
       }
 
-      // メールアドレス変更対応
       if (newEmail !== user.email) {
         localStorage.removeItem("user_" + user.email);
       }
@@ -287,3 +285,4 @@
   </script>
 </body>
 </html>
+
