@@ -20,7 +20,6 @@
       flex-direction: column;
     }
 
-    /* --- アカウント丸アイコン --- */
     .account-btn {
       position: fixed;
       top: 20px;
@@ -41,7 +40,6 @@
     .account-btn:hover { background: #555; transform: translateY(-2px); }
     .account-btn svg { width: 22px; height: 22px; fill: white; }
 
-    /* --- アカウントメニュー --- */
     .account-menu {
       position: fixed;
       top: 70px;
@@ -74,7 +72,6 @@
     }
     .account-menu button:hover { background: #3d5063; }
 
-    /* --- ヒーロー --- */
     header.hero {
       height: 45vh;
       background: url("新座総合技術高等学校校舎.jpg") center/cover no-repeat;
@@ -133,7 +130,6 @@
       font-size: 0.8rem;
     }
 
-    /* --- アカウント編集画面 --- */
     .account-edit {
       position: fixed;
       top: 50%;
@@ -173,21 +169,18 @@
 </head>
 <body>
 
-  <!-- アカウントアイコン -->
   <div class="account-btn" id="accountBtn">
     <svg viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
     </svg>
   </div>
 
-  <!-- アカウントメニュー -->
   <div class="account-menu" id="accountMenu">
     <div class="username-display" id="menuUsername"></div>
     <button id="accountDetailBtn">アカウント詳細</button>
     <button onclick="logout()">ログアウト</button>
   </div>
 
-  <!-- アカウント編集画面 -->
   <div class="account-edit" id="accountEdit">
     <h3>アカウント詳細</h3>
     <label>ユーザー名</label>
@@ -238,12 +231,10 @@
     let user = JSON.parse(localStorage.getItem("user_" + currentEmail));
     menuUsername.textContent = user.username; // メニュー上部に表示
 
-    // アカウントボタンクリックでメニュー表示
     accountBtn.addEventListener("click", () => {
       accountMenu.style.display = accountMenu.style.display === "block" ? "none" : "block";
     });
 
-    // メニュー外クリックで閉じる
     document.addEventListener("click", (e) => {
       if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target) && !accountEdit.contains(e.target)) {
         accountMenu.style.display = "none";
@@ -251,7 +242,6 @@
       }
     });
 
-    // アカウント詳細ボタンクリックで編集画面表示
     accountDetailBtn.addEventListener("click", () => {
       document.getElementById("editUsername").value = user.username;
       document.getElementById("editEmail").value = user.email;
@@ -260,7 +250,6 @@
       accountMenu.style.display = "none";
     });
 
-    // 保存ボタン
     saveAccountBtn.addEventListener("click", () => {
       user.username = document.getElementById("editUsername").value;
       user.email = document.getElementById("editEmail").value;
@@ -280,4 +269,5 @@
   </script>
 </body>
 </html>
+
 
