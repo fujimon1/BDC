@@ -1,98 +1,130 @@
-body {
-  margin: 0;
-  font-family: 'Rounded Mplus 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif;
-  background: linear-gradient(to bottom, #ffe6ef, #ffffff);
-  color: #555;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>科内選択画面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-/* ヘッダー */
-header {
-  background: linear-gradient(to right, #ff9ecb, #ff7fb0);
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(255, 140, 180, 0.3);
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rounded Mplus 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif;
+      background: linear-gradient(to bottom, #ffe6ef, #ffffff);
+      color: #555;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
+    header {
+      background: linear-gradient(to right, #ff9ecb, #ff7fb0);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(255, 140, 180, 0.3);
+    }
 
-header p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
 
-header .back-button-container {
-  margin-top: 1.5rem;
-}
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
 
-header button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #ff7fb0;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(255, 140, 180, 0.3);
-  transition: background-color 0.3s, transform 0.2s;
-}
+    header .back-button-container {
+      margin-top: 1.5rem;
+    }
 
-header button:hover {
-  background-color: #ff66a3;
-  transform: translateY(-3px);
-}
+    header button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff7fb0;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(255, 140, 180, 0.3);
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-/* メニュー */
-.menu {
-  margin: 18rem auto 18rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  flex-grow: 1;
-}
+    header button:hover {
+      background-color: #ff66a3;
+      transform: translateY(-3px);
+    }
 
-.menu a {
-  text-decoration: none;
-  background: white;
-  border: 2px solid #ff99c8;
-  color: #ff66a3;
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  width: 200px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(255, 175, 200, 0.3);
-  transition: all 0.3s;
-}
+    .menu {
+      margin: 18rem auto 18rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      flex-grow: 1;
+    }
 
-.menu a:hover {
-  background: #ff99c8;
-  color: white;
-  transform: translateY(-5px);
-}
+    .menu a {
+      text-decoration: none;
+      background: white;
+      border: 2px solid #ff99c8;
+      color: #ff66a3;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      width: 200px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(255, 175, 200, 0.3);
+      transition: all 0.3s;
+    }
 
-/* フッター */
-footer {
-  background: #ff7fb0;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  margin-top: auto;
-  box-shadow: 0 -2px 10px rgba(255, 140, 180, 0.2);
-}
+    .menu a:hover {
+      background: #ff99c8;
+      color: white;
+      transform: translateY(-5px);
+    }
 
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .menu {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+    footer {
+      background: #ff7fb0;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: 0 -2px 10px rgba(255, 140, 180, 0.2);
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>科内選択紹介</h1>
+    <p>カテゴリーを選んでください</p>
+    <div class="back-button-container">
+      <button onclick="location.href='home.html'" type="button">
+        選択画面に戻る
+      </button>
+    </div>
+  </header>
+
+  <div class="menu">
+    <a href="科内選択n選択.html">n選択</a>
+    <a href="科内選択s選択.html">s選択</a>
+    <a href="科内選択g選択.html">g選択</a>
+    <a href="3年1・2組.html">3年1・2組</a>
+  </div>
+
+  <footer>
+    © 新座総合技術高等学校 科内選択紹介ページ
+  </footer>
+
+</body>
+</html>
