@@ -8,96 +8,106 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Rounded Mplus 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif;
-      background: linear-gradient(to bottom, #ffe6ef, #ffffff);
-      color: #555;
+      font-family: "Koruri", "Hiragino Maru Gothic ProN", "Yu Gothic Medium", sans-serif;
+      background: linear-gradient(to bottom, #f7f3f4, #faf9f9);
+      color: #4a4a4a;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      letter-spacing: 0.4px;
     }
 
+    /* ─── Header ───────────────────────────── */
     header {
-      background: linear-gradient(to right, #ff9ecb, #ff7fb0);
-      color: white;
-      padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(255, 140, 180, 0.3);
+      padding: 3rem 1rem;
+      background: #f5e9ee;
+      border-bottom: 1px solid #ebd9df;
+      box-shadow: 0 2px 20px rgba(200, 170, 180, 0.15);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: #52454c;
     }
 
     header p {
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
       font-size: 1rem;
-    }
-
-    header .back-button-container {
-      margin-top: 1.5rem;
+      opacity: 0.7;
     }
 
     header button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+      margin-top: 1.8rem;
+      padding: 0.7rem 1.6rem;
+      background: #eac5d3;
       border: none;
-      border-radius: 8px;
-      background-color: #ff7fb0;
-      color: white;
+      border-radius: 12px;
+      color: #504045;
+      font-size: 0.95rem;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(255, 140, 180, 0.3);
-      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(210, 150, 160, 0.25);
+      transition: 0.25s;
     }
 
     header button:hover {
-      background-color: #ff66a3;
+      background: #e2b5c7;
       transform: translateY(-3px);
     }
 
+    /* ─── Menu ───────────────────────────── */
     .menu {
-      margin: 18rem auto 18rem;
+      margin: 8rem auto 6rem;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 2rem;
-      flex-grow: 1;
+      justify-content: center;
+      gap: 2.5rem;
+      width: 90%;
+      max-width: 900px;
     }
 
     .menu a {
       text-decoration: none;
-      background: white;
-      border: 2px solid #ff99c8;
-      color: #ff66a3;
-      padding: 1.2rem 3rem;
-      font-size: 1.2rem;
-      width: 200px;
+      background: #ffffff;
+      padding: 1.3rem 0;
+      width: 220px;
       text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(255, 175, 200, 0.3);
-      transition: all 0.3s;
+      border-radius: 18px;
+      font-size: 1.15rem;
+      color: #6b5660;
+      border: 1.5px solid #e7d5db;
+      box-shadow: 0 4px 20px rgba(210, 160, 170, 0.15);
+      transition: 0.3s ease;
     }
 
     .menu a:hover {
-      background: #ff99c8;
-      color: white;
-      transform: translateY(-5px);
+      background: #f4e4ea;
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(180, 140, 150, 0.2);
     }
 
+    /* ─── Footer ───────────────────────────── */
     footer {
-      background: #ff7fb0;
-      color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.2rem;
+      background: #f0e3e8;
+      border-top: 1px solid #e6d6dd;
       font-size: 0.9rem;
+      color: #6a5c62;
+      box-shadow: 0 -2px 15px rgba(190, 160, 170, 0.15);
       margin-top: auto;
-      box-shadow: 0 -2px 10px rgba(255, 140, 180, 0.2);
     }
 
+    /* ─── Responsive ───────────────────────── */
     @media (max-width: 600px) {
       .menu {
-        flex-direction: column;
-        align-items: center;
+        gap: 1.5rem;
+        margin-top: 5rem;
+      }
+      .menu a {
+        width: 80%;
       }
     }
   </style>
@@ -108,11 +118,9 @@
   <header>
     <h1>科内選択紹介</h1>
     <p>カテゴリーを選んでください</p>
-    <div class="back-button-container">
-      <button onclick="location.href='home.html'" type="button">
-        選択画面に戻る
-      </button>
-    </div>
+    <button onclick="location.href='home.html'" type="button">
+      選択画面に戻る
+    </button>
   </header>
 
   <div class="menu">
