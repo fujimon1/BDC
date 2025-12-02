@@ -125,7 +125,6 @@
   <!-- ここにコメント一覧が動的に入る -->
   <!-- フォームは後ろに置きます -->
   
-  <!-- コメント投稿フォーム -->
   <form id="commentForm">
     <h2>感想を書き込む</h2>
     <input type="text" id="nameInput" placeholder="お名前" required />
@@ -254,7 +253,6 @@
       userId: currentUserId
     };
 
-    // 保存
     const storedReviews = JSON.parse(localStorage.getItem('zyokenReviews') || '[]');
     storedReviews.push(newReview);
     localStorage.setItem('zyokenReviews', JSON.stringify(storedReviews));
@@ -269,7 +267,3 @@
 
 </body>
 </html>
-
-    
-    
-    
