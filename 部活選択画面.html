@@ -1,35 +1,143 @@
-/* 戻るボタン（立体ボタン） */
-.back-btn {
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  background: linear-gradient(#ffffff, #e9e9e9); /* 上を明るく、下を少し暗め */
-  color: #2a4d7c;
-  border: 1px solid #c8c8c8;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>部活動紹介</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
 
-  /* 立体感のポイント（影） */
-  box-shadow:
-      0 4px 0 #b5b5b5,      /* 下方向の太め影 → ボタンが浮いて見える */
-      0 4px 10px rgba(0,0,0,0.2); /* ふんわり外側影 */
+    /* 背景を薄いグレーに（白と入れ替え） */
+    body {
+      margin: 0;
+      font-family: "Montserrat", "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f0f4f8; /* ←薄いグレー */
+      color: #333;
+    }
 
-  transition: 0.2s;
-}
+    /* ヘッダー */
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #2a4d7c;
+    }
+    header p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: #555;
+    }
 
-/* ホバー時：少し持ち上がる */
-.back-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-      0 6px 0 #a8a8a8,
-      0 6px 14px rgba(0,0,0,0.25);
-}
+    /* ────────────────────────────
+       ▼ 立体ボタン（3D風）
+       ──────────────────────────── */
+    .back-btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.8rem;
+      background: linear-gradient(#ffffff, #e9e9e9);
+      color: #2a4d7c;
+      border: 1px solid #c8c8c8;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
 
-/* 押した時：沈む（ここが3Dの決め手） */
-.back-btn:active {
-  transform: translateY(3px);
-  box-shadow:
-      0 1px 0 #b5b5b5,
-      0 2px 6px rgba(0,0,0,0.2);
-  background: linear-gradient(#f2f2f2, #e3e3e3);
-}
+      /* 立体に見せる影 */
+      box-shadow:
+          0 4px 0 #b5b5b5,                 /* 下に太い影 → 浮いて見える */
+          0 4px 10px rgba(0,0,0,0.2);      /* ふんわり影 */
+
+      transition: 0.2s;
+    }
+
+    /* ホバー：さらに持ち上がる */
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+          0 6px 0 #a8a8a8,
+          0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    /* クリック：沈む（3Dの決め手） */
+    .back-btn:active {
+      transform: translateY(3px);
+      box-shadow:
+          0 1px 0 #b5b5b5,
+          0 2px 6px rgba(0,0,0,0.2);
+      background: linear-gradient(#f2f2f2, #e3e3e3);
+    }
+
+    /* メニューエリア */
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 3rem 0 2rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* カード（白で統一） */
+    .card {
+      width: 240px;
+      padding: 1.6rem 1rem;
+      text-align: center;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #d4d4d4;
+      color: #2a4d7c;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      background: #f7f7f7;
+    }
+
+    /* フッター */
+    footer {
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .card { width: 200px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>部活動紹介</h1>
+    <p>興味のあるカテゴリーを選んでください</p>
+    <button class="back-btn" onclick="location.href='home.html';">選択画面に戻る</button>
+  </header>
+
+  <div class="menu">
+    <a href="運動部紹介画面.html" class="card">運動部</a>
+    <a href="文化部紹介画面.html" class="card">文化部</a>
+  </div>
+
+  <footer>
+    © 2025 新座総合技術高等学校 - 部活動紹介ページ
+  </footer>
+
+</body>
+</html>
